@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { useAuthContext } from '~/hooks/useAuthContext'
 import './header.scss'
+import CartOff from '~/components/CartOff'
 
 function Header () {
   const { isAuth, logout } = useAuthContext()
@@ -27,7 +28,7 @@ function Header () {
                   <NavLink to='/secret' className={({ isActive }) => linkIsActive(isActive)}>Secret</NavLink>
                 </li>
                 <li className='header__list-item'>
-                  <NavLink to='/' className='header__item-link' onClick={logout}>logout</NavLink>
+                  <NavLink to='/' className='header__item-link' onClick={logout}>Logout</NavLink>
                 </li>
               </>
               )
@@ -42,6 +43,13 @@ function Header () {
               </>
               )
         }
+
+        <li className='header__list-item'>
+          <NavLink to='#cartOffcanvas' className='header__item-link' data-bs-toggle='offcanvas' role='button'>Cart</NavLink>
+          <CartOff>
+            <NavLink to='/cart' className={({ isActive }) => linkIsActive(isActive)}>Cart</NavLink>
+          </CartOff>
+        </li>
       </ul>
     </nav>
   )
