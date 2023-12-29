@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = 'https://ecommerce-json-jwt.onrender.com'
+const BASE_URL = 'https://ecommercek6.onrender.com'
 
 // https://stackoverflow.com/questions/71989146/axios-instance-not-getting-the-token-from-local-storage-on-first-call-react-js
 axios.interceptors.request.use((config) => {

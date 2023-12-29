@@ -1,7 +1,7 @@
 function CartOff ({ children }) {
   return (
     <>
-      <div className='offcanvas offcanvas-end' tabIndex='-1' id='cartOffcanvas'>
+      <div className='offcanvas offcanvas-end offcanvas-light' tabIndex='-1' id='cartOffcanvas' data-bs-hideresize='true'>
         <div className='offcanvas-header'>
           <h5 className='offcanvas-title' id='staticBackdropLabel'>Your Cart</h5>
           <button type='button' className='btn-close' data-bs-dismiss='offcanvas' />

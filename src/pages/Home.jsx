@@ -1,25 +1,9 @@
-import { useState, useEffect } from 'react'
-import { getAllItems } from '~/services/itemServices' // Resultado de la consulta al endpoint de items
+import { useProductsContext } from '../hooks/useProductsContext'
 import ItemCard from '~/components/ItemCard'
 
 function Home () {
-  const [itemsData, setItemsData] = useState(null)
-  const [loading, setLoadign] = useState(true)
-
-  useEffect(() => {
-    async function fetchItemData () {
-      try {
-        const response = await getAllItems()
-        if (response.status === 200) {
-          setItemsData(response.data)
-          setLoadign(false)
-        }
-      } catch (error) {
-        console.log('Fail to load items: ', error.message)
-      }
-    }
-    fetchItemData()
-  }, [])
+  const { itemsData, loading } = useProductsContext()
+  console.log(itemsData)
 
   return (
     <>

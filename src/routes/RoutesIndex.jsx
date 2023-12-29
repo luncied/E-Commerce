@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Home, Dashboard, Login, Signup, Secret, Cart } from '~/pages'
-import { useAuthContext } from '~/hooks/useAuthContext'
+import { Home, Dashboard, Login, Signup, Secret, Cart } from '../pages'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 function RoutesIndex () {
   const { isAuth } = useAuthContext()

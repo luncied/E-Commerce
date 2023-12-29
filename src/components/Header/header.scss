@@ -1,4 +1,4 @@
-$menu-color: #775e86;
+$menuColor: #775e86;
 
 .header {
   background-color: #d2a5ec;
@@ -8,7 +8,7 @@ $menu-color: #775e86;
   padding: 15px 30px;
 
   @mixin header-link {
-    color: $menu-color;
+    color: $menuColor;
     text-decoration: none;
     letter-spacing: 2px;
   }
@@ -26,13 +26,14 @@ $menu-color: #775e86;
 
   &__item-link {
     @include header-link;
+    padding: 0rem 10rem;
     
     &--is-active {
       border-bottom: solid 3px;
     }
     
     &:hover {
-      border-bottom: solid 2px $menu-color;
+      border-bottom: solid 2px $menuColor;
     }
   }
 

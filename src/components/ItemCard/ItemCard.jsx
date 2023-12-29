@@ -11,7 +11,7 @@ function ItemCard ({ itemsData }) {
               <img
                 className='card-img-top'
                 style={{ maxHeight: '300px' }}
-                src={product.image}
+                // src={product.image}
                 alt={`img-of-${product.product_name}`}
               />
             </div>
