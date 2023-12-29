@@ -7,7 +7,7 @@ const ProductsContext = createContext()
 // 2. Crear el Proveedor del contexto (privider)
 function ProductsProvider ({ children }) {
   const [itemsData, setItemsData] = useState(null)
-  const [itemSearched, setItemSearched] = useState(null)
+  const [itemSearched, setItemSearched] = useState([])
   const [loading, setLoadign] = useState(true)
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function ProductsProvider ({ children }) {
     try {
       const response = await getSingleItem(id)
       if (response.status === 200) {
-        setItemSearched(response.data)
+        setItemSearched([...itemSearched, response.data])
       }
     } catch (error) {
       console.log('Fail to load item: ', error.message)

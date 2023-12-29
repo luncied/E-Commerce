@@ -1,20 +1,40 @@
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuthContext } from '~/hooks/useAuthContext'
+import { useProductsContext } from '~/hooks/useProductsContext'
 import { Cart3 } from 'react-bootstrap-icons'
-import './header.scss'
 import CartOff from '~/components/CartOff'
+import './header.scss'
 
 function Header () {
   const { isAuth, logout } = useAuthContext()
+  const { itemsData, fetchOneItem } = useProductsContext()
+
+  const [ query, setQuery ] = useState('')
+
+  function handleSearchSubmit (e) {
+    e.preventDefault()
+    setQuery(e.target.value)
+  }
 
   function linkIsActive (isActive) {
     return isActive ? 'header__item-link header__item-link--is-active nav-link' : 'header__item-link nav-link'
   }
 
+  // continue with this useEffect and
+  useEffect(() => {
+    itemsData.filter(product => {
+      return product.product_name.toLowerCase().includes(query.toLowerCase())
+    }).map(product => {
+      fetchOneItem(product.id)
+      return true
+    })
+  }, [query])
+
   return (
     <>
       <nav className='header navbar navbar-expand-lg fixed-top'>
-        <div className='container'>
+        <div className='container'>{}
           <NavLink to='' className='header__logo'>Logo</NavLink>
           <div className='d-flex flex-grow-1justify-content-end'>
             <div className='order-lg-last tw-order-last '>
@@ -26,7 +46,7 @@ function Header () {
               <span className='navbar-toggler-icon' data-bs-target='#navbarNav' />
             </button>
             <div className='justify-content-end collapse navbar-collapse' id='navbarNav' aria-labelledby='navbarNav' aria-hidden='true'>
-              <form className='d-flex' role='search'>
+              <form className='d-flex' role='search' onSubmit={handleSearchSubmit}>
                 <input className='form-control me-2' type='search' placeholder='Search' aria-label='Search' />
                 <button className='btn btn-outline-dark' type='submit'>Search</button>
               </form>
