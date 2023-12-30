@@ -6,42 +6,67 @@ const ProductsContext = createContext()
 
 // 2. Crear el Proveedor del contexto (privider)
 function ProductsProvider ({ children }) {
-  const [itemsData, setItemsData] = useState(null)
+  const [firstResponse, setfirstResponse] = useState(null)
+  const [itemsData, setItemsData] = useState([])
   const [itemSearched, setItemSearched] = useState([])
   const [loading, setLoadign] = useState(true)
 
   useEffect(() => {
-    async function fetchItemsData () {
-      try {
-        const response = await getAllItems()
-        if (response.status === 200) {
-          setItemsData(response.data)
-          setLoadign(false)
-        }
-      } catch (error) {
-        console.log('Fail to load items: ', error.message)
-      }
-    }
-    fetchItemsData()
+    firstFetch()
   }, [])
 
-  async function fetchOneItem (id) {
+  useEffect(() => {}, [
+    firstResponse,
+    itemsData,
+    itemSearched
+  ])
+
+  async function firstFetch () {
     try {
-      const response = await getSingleItem(id)
+      const response = await getAllItems()
       if (response.status === 200) {
-        setItemSearched([...itemSearched, response.data])
+        setfirstResponse(response.data)
+        setItemsData(response.data)
+        setLoadign(false)
       }
     } catch (error) {
-      console.log('Fail to load item: ', error.message)
+      console.log('Fail to load items: ', error.message)
     }
   }
 
+  async function fetchItemsData () {
+    try {
+      const response = await getAllItems()
+      if (response.status === 200) {
+        setItemsData(response.data)
+        setLoadign(false)
+      }
+    } catch (error) {
+      console.log('Fail to load items: ', error.message)
+    }
+  }
+
+  // async function fetchOneItem (id) {
+  //   try {
+  //     const response = await getSingleItem(id)
+  //     if (response.status === 200) {
+  //       setItemSearched([...itemSearched, response.data])
+  //     }
+  //   } catch (error) {
+  //     console.log('Fail to load item: ', error.message)
+  //   }
+  // }
+
   const values = {
+    firstResponse,
+    setfirstResponse,
     itemsData,
     setItemsData,
     itemSearched,
     loading,
-    fetchOneItem
+    firstFetch,
+    fetchItemsData
+    // fetchOneItem
   }
 
   return (

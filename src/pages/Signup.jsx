@@ -31,7 +31,7 @@ function Signup () {
 
   return (
     <>
-      <div className='form-container'>
+      <div className='form-container tw-pt-20'>
         <form className='form-signin w-100 m-auto' onSubmit={handleSubmit}>
           <h1 className='h3 mb-3 fw-normal text-center'>Please sign up</h1>
 

@@ -4,7 +4,7 @@ function Secret () {
   const { userPayload } = useAuthContext()
 
   return (
-    <>
+    <div className='tw-pt-20'>
       {
       userPayload?.role === 'ADMIN'
         ? <h2>Hola ADMIN</h2>
@@ -17,7 +17,7 @@ function Secret () {
       {
         userPayload?.role === 'ADMIN' && <h4>Bienvenido ADMIN</h4>
       }
-    </>
+    </div>
   )
 }
 

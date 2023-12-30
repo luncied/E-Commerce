@@ -1,0 +1,53 @@
+@import './../../styles/mediaQueries';
+$menuColor: #775e86;
+
+.header {
+  background-color: #d2a5ec;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+
+  @mixin header-link {
+    display: flex;
+    color: $menuColor;
+    text-decoration: none;
+    letter-spacing: 2px;
+  }
+
+  &__logo {
+    @include header-link;
+  }
+  &__list-item {
+    display: flex;
+    @include sm {
+      padding: 0rem 1.85rem;
+    }
+    @include xs {
+      padding: 0rem 1.85rem;
+    }
+    @include lg {
+      padding: 0rem 0rem;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    list-style: none;
+    column-gap: 2px;
+    flex-wrap: wrap;
+  }
+
+  &__item-link {
+    @include header-link;
+    
+    &--is-active {
+      border-bottom: solid 3px;
+    }
+    
+    &:hover {
+      border-bottom: solid 2px $menuColor;
+    }
+  }
+
+}
