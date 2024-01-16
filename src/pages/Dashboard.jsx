@@ -29,7 +29,7 @@ function Dashboard () {
       {
         userData &&
           (
-            <div className='tw-container tw-max-w-xl tw-flex tw-flex-col tw-items-center '>
+            <div className='tw-container tw-max-w-xl tw-max-h-xl tw-flex tw-flex-col tw-items-center '>
               <div className='form-control tw-flex tw-flex-col tw-items-center tw-py-20'>
                 <div className='input-group tw-max-w-md'>
                   <span className='input-group-text' id='basic-addon1'>
