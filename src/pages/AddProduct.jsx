@@ -1,6 +1,7 @@
 function AddProduct() {
   return (
-    <div>
+    <div className=" tw-ms-80">
+      add
     </div>
   )
 }
