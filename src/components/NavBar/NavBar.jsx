@@ -38,7 +38,7 @@ function NavBar () {
 
   return (
     <>
-      <div className='justify-content-end offcanvas offcanvas-top' id='navbarNav' data-bs-hideresize='true' aria-labelledby='navbarNav' aria-hidden='true'>
+      <div className='justify-content-end offcanvas offcanvas-top py-2' id='navbarNav' data-bs-hideresize='true' aria-labelledby='navbarNav' aria-hidden='true'>
         <div className='offcanvas-header header'>
           <h5 className='offcanvas-title' id='staticBackdropLabel'>Menú</h5>
           <button type='button' className='btn-close' data-bs-dismiss='offcanvas' />
