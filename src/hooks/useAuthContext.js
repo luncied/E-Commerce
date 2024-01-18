@@ -9,5 +9,6 @@ export function useAuthContext () {
   if (context === undefined) {
     throw new Error('AuthContext debe ser usado dentro de AuthProvider')
   }
+
   return context
 }

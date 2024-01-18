@@ -1,5 +1,6 @@
 import { AuthProvider } from './context/AuthContext'
 import { ProductsProvider } from './context/ProductsContext'
+import { SecretProvider } from './context/SecretContext'
 import { BrowserRouter } from 'react-router-dom'
 import Header from './components/Header'
 import RoutesIndex from './routes/RoutesIndex'
@@ -12,7 +13,9 @@ function App () {
         <ProductsProvider>
           <BrowserRouter>
             <Header />
-            <RoutesIndex />
+            <SecretProvider>
+              <RoutesIndex />
+            </SecretProvider>
           </BrowserRouter>
         </ProductsProvider>
       </AuthProvider>
