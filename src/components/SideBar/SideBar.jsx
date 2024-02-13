@@ -12,19 +12,19 @@ function SideBar () {
         <hr className='text-white d-none d-sm-block' />
         <ul className='nav nav-pills flex-column mt-2 mt-sm-0' id='secret-menu'>
           <li className='nav-item my-sm-1 my-2'>
-            <a className='nav-link text-white text-center text-sm-start' id='add' aria-current='page' onClick={handleClickChange}>
+            <a className='nav-link text-white text-center text-sm-start' aria-current='page' id='add' onClick={handleClickChange}>
               <i className='fa-solid fa-gauge' />
               <span className='ms-2 d-none d-sm-inline'>Crear producto</span>
             </a>
           </li>
           <li className='nav-item my-sm-1 my-2'>
-            <a className='nav-link text-white text-center text-sm-start' id='edit' aria-current='page' onClick={handleClickChange}>
+            <a className='nav-link text-white text-center text-sm-start' aria-current='page' id='edit' onClick={handleClickChange}>
               <i className='fa fa-house' />
               <span className='ms-2 d-none d-sm-inline'>Editar un producto</span>
             </a>
           </li>
           <li className='nav-item my-sm-1 my-2'>
-            <a className='nav-link text-white text-center text-sm-start' id='del' aria-current='page' onClick={handleClickChange}>
+            <a className='nav-link text-white text-center text-sm-start' aria-current='page' id='del' onClick={handleClickChange}>
               <i className='fa fa-users' />
               <span className='ms-2 d-none d-sm-inline'>Eliminar un producto</span>
             </a>
@@ -46,7 +46,7 @@ function SideBar () {
           </li> */}
         </ul>
       </div>
-      <div>
+      {/* <div>
         <div className='dropdown open'>
           <a
             className='btn btn-border-none outline-none text-white dropdown-toggle text-center text-sm-start'
@@ -63,7 +63,7 @@ function SideBar () {
             <a className='dropdown-item' href='#'>Settings</a>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

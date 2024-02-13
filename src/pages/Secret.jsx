@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
 import { useAuthContext } from '~/hooks/useAuthContext'
 import { useSecretContext } from '../hooks/useSecretContext'
+import { AddProduct, DeleteProduct, EditProduct } from '~/pages'
 import SideBar from '../components/SideBar/SideBar'
 import '~/styles/Secret.scss'
 
@@ -17,7 +17,15 @@ function Secret () {
             ? <SideBar />
             : <h2>Hola Customer</h2>
           }
-          <div className='d-flex felx-column justify-content-between col-auto min-vh-100'>{page}</div>
+          <div className='container flex-column text-center col-auto xs:tw-min-w-[70%] sm:tw-min-w-[60%] lg:tw-min-w-[75%] tw-pt-16'>
+            {
+            page === 'add'
+              ? <AddProduct />
+              : page === 'edit'
+                ? <EditProduct />
+                : <DeleteProduct />
+            }
+          </div>
         </div>
       </div>
     </>

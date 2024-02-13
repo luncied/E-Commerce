@@ -2,7 +2,10 @@
 $menuColor: #775e86;
 
 .header {
-  background-color: #d2a5ec;
+  background-image: linear-gradient(to top, #e0c3fc 0%, #8ec5fc 100%);
+  // background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+  // background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);
+  // background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
   display: flex;
   justify-content: space-between;
   align-items: center;

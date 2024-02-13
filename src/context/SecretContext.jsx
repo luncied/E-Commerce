@@ -8,7 +8,13 @@ function SecretProvider ({ children }) {
   const [page, setPage] = useState('')
 
   function handleClickChange (e) {
-    setPage(e.target.id)
+    if (e.target.tagName === 'A') {
+      setPage(e.target.id)
+      return
+    }
+    if (e.target.tagName === 'I' || e.target.tagName === 'SPAN') {
+      setPage(e.target.parentElement.id)
+    }
   }
 
   useEffect(() => {
