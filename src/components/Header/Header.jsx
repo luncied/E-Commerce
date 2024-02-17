@@ -6,7 +6,7 @@ import Cart from '../Cart'
 function Header () {
   return (
     <>
-      <nav className='header navbar navbar-expand-lg fixed-top tw-sticky'>
+      <nav className='header navbar navbar-expand-lg tw-fixed fixed-top'>
         <div className='container'>{}
           <NavLink to='' className='header__logo'>Logo</NavLink>
           <div className='d-flex flex-grow-1justify-content-end'>

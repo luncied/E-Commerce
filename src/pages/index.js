@@ -7,6 +7,7 @@ import Cart from './Cart'
 import AddProduct from './AddProduct'
 import EditProduct from './EditProduct'
 import DeleteProduct from './DeleteProduct'
+import Status from './Status'
 
 export {
   Home,
@@ -17,5 +18,6 @@ export {
   Cart,
   AddProduct,
   EditProduct,
-  DeleteProduct
+  DeleteProduct,
+  Status
 }

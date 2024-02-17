@@ -18,7 +18,6 @@ function SecretProvider ({ children }) {
   }
 
   useEffect(() => {
-    console.log(page)
   }, [page])
 
   const values = {

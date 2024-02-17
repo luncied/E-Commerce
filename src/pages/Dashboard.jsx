@@ -22,8 +22,8 @@ function Dashboard () {
   }, [userPayload.id])
 
   return (
-    <div className='tw-container tw-max-w-full tw-flex tw-flex-col tw-justify-evenly tw-items-center tw-w-screen tw-h-screen tw-pt-4'>
-      <h2 className=''>
+    <div className='tw-container tw-max-w-full tw-flex tw-flex-col tw-items-center tw-w-screen tw-h-screen tw-pt-20'>
+      <h2 className='tw-py-20'>
         Información del Usuario
       </h2>
       {

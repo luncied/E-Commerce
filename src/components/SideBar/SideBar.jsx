@@ -4,7 +4,7 @@ function SideBar () {
   const { handleClickChange } = useSecretContext()
 
   return (
-    <div className='d-flex flex-column justify-content-between col-auto bg-dark min-vh-100'>
+    <div className='d-flex flex-column justify-content-between col-auto bg-dark min-vh-100 tw-pt-16'>
       <div className='mt-4'>
         <a className='text-white d-none d-sm-inline text-decoration-none d-flex align-items-center ms-4' role='button'>
           <span className='fs-5'>Side Menu</span>
