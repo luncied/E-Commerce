@@ -5,6 +5,7 @@ import Status from './Status'
 function AddProduct () {
   // Crear un container con el borde unicamente por debajo
   const [redirect, setRedirect] = useState(false)
+
   const datos = {
     product_name: '',
     description: '',
@@ -13,13 +14,23 @@ function AddProduct () {
     brand: ''
   }
 
-  useEffect(() => {}, [redirect])
-
   function sendData () {
     setRedirect(true)
   }
 
-  const { input, handleInputChange, handleSubmit } = useForm(sendData, datos)
+  useEffect(() => {}, [redirect])
+
+  const { input, setInput, handleInputChange, handleSubmit } = useForm(sendData, datos)
+
+  useEffect(() => {
+    if (redirect) {
+      setInput({ ...input, [input.product_name]: '' })
+      setInput({ ...input, [input.description]: '' })
+      setInput({ ...input, [input.price]: 0 })
+      setInput({ ...input, [input.category]: '' })
+      setInput({ ...input, [input.brand]: '' })
+    }
+  }, [redirect])
 
   return (
     <div className='container text-center tw-min-w-full'>
@@ -40,27 +51,27 @@ function AddProduct () {
           >
             <div className='row py-3'>
               <label className='col-4 text-end tw-font-bold tw-text-lg' htmlFor='product_name'>Nombre del producto</label>
-              <input className='col-8 tw-rounded-md tw-border-0 tw-border-e-2 tw-border-b-2' type='text' name='product_name' placeholder='Nombre del producto' id='product_name' value={input.product_name} onChange={handleInputChange} />
+              <input className='col-8 tw-rounded-md tw-border-0 tw-border-e-2 tw-border-b-2' type='text' name='product_name' placeholder='Nombre del producto' id='product_name' value={redirect ? '' : input.product_name} onChange={handleInputChange} />
             </div>
 
             <div className='row py-3'>
               <label className='col-4 text-end tw-font-bold tw-text-lg' htmlFor='description'>Descripción del producto</label>
-              <input className='col-8 tw-rounded-md tw-border-0 tw-border-e-2 tw-border-b-2' type='text' name='description' placeholder='Descripción' id='description' value={input.description} onChange={handleInputChange} />
+              <input className='col-8 tw-rounded-md tw-border-0 tw-border-e-2 tw-border-b-2' type='text' name='description' placeholder='Descripción' id='description' value={redirect ? '' : input.description} onChange={handleInputChange} />
             </div>
 
             <div className='row py-3'>
               <label className='col-4 text-end tw-font-bold tw-text-lg' htmlFor='price'>Precio del producto</label>
-              <input className='col-8 tw-rounded-md tw-border-0 tw-border-e-2 tw-border-b-2' type='number' name='price' placeholder='Precio' id='price' value={input.price} onChange={handleInputChange} min={1} />
+              <input className='col-8 tw-rounded-md tw-border-0 tw-border-e-2 tw-border-b-2' type='number' name='price' placeholder='Precio' id='price' value={redirect ? '' : input.price} onChange={handleInputChange} min={1} />
             </div>
 
             <div className='row py-3'>
               <label className='col-4 text-end tw-font-bold tw-text-lg' htmlFor='category'>Categoría del producto</label>
-              <input className='col-8 tw-rounded-md tw-border-0 tw-border-e-2 tw-border-b-2' type='text' name='category' placeholder='Categoría' id='category' value={input.category} onChange={handleInputChange} />
+              <input className='col-8 tw-rounded-md tw-border-0 tw-border-e-2 tw-border-b-2' type='text' name='category' placeholder='Categoría' id='category' value={redirect ? '' : input.category} onChange={handleInputChange} />
             </div>
 
             <div className='row py-3'>
               <label className='col-4 text-end tw-font-bold tw-text-lg' htmlFor='brand'>Marca</label>
-              <input className='col-8 tw-rounded-md tw-border-0 tw-border-e-2 tw-border-b-2' type='text' name='brand' placeholder='Marca' id='brand' value={input.brand} onChange={handleInputChange} />
+              <input className='col-8 tw-rounded-md tw-border-0 tw-border-e-2 tw-border-b-2' type='text' name='brand' placeholder='Marca' id='brand' value={redirect ? '' : input.brand} onChange={handleInputChange} />
             </div>
 
             {/* <label htmlFor='genero'>Genero</label>

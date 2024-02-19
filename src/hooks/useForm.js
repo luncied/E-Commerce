@@ -22,6 +22,7 @@ function useForm (callback, defaults) {
 
   return {
     input,
+    setInput,
     handleInputChange,
     handleSubmit
   }
