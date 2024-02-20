@@ -8,7 +8,7 @@ const ProductsContext = createContext()
 function ProductsProvider ({ children }) {
   const [firstResponse, setfirstResponse] = useState(null)
   const [itemsData, setItemsData] = useState([])
-  const [itemSearched, setItemSearched] = useState([])
+  const [idSearched, setIdSearched] = useState([])
   const [loading, setLoadign] = useState(true)
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function ProductsProvider ({ children }) {
   useEffect(() => {}, [
     firstResponse,
     itemsData,
-    itemSearched
+    idSearched
   ])
 
   async function firstFetch () {
@@ -46,27 +46,27 @@ function ProductsProvider ({ children }) {
     }
   }
 
-  // async function fetchOneItem (id) {
-  //   try {
-  //     const response = await getSingleItem(id)
-  //     if (response.status === 200) {
-  //       setItemSearched([...itemSearched, response.data])
-  //     }
-  //   } catch (error) {
-  //     console.log('Fail to load item: ', error.message)
-  //   }
-  // }
+  async function fetchOneItem (id) {
+    try {
+      const response = await getSingleItem(id)
+      if (response.status === 200) {
+        setIdSearched(response.data)
+      }
+    } catch (error) {
+      console.log('Fail to load item: ', error.message)
+    }
+  }
 
   const values = {
     firstResponse,
     setfirstResponse,
     itemsData,
     setItemsData,
-    itemSearched,
+    idSearched,
     loading,
     firstFetch,
-    fetchItemsData
-    // fetchOneItem
+    fetchItemsData,
+    fetchOneItem
   }
 
   return (
