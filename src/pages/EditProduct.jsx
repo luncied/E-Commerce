@@ -10,9 +10,27 @@ function EditProduct () {
   const { firstResponse, fetchOneItem, idSearched } = useProductsContext()
 
   const [redirect, setRedirect] = useState(false)
-  const [searchInput, setSearchInput] = useState('')
-  const [result, setResult] = useState([])
-  const [query, setQuery] = useState('')
+  const [searchInput, setSearchInput] = useState('') // Registra lo que hay en el input para buscar en la API
+  const [resultId, setResultId] = useState('') // El ID del objeto que hace match con lo buscado en searchBar
+  const [result, setResult] = useState([]) // El objeto que hace match con lo buscado en el searchBar
+
+  useEffect(() => {
+    if (resultId) {
+      fetchOneItem(resultId)
+      setInput(data)
+    }
+  }, [result])
+
+  // Este useEffect permite que se actualice en tiempo real el resultId y que haga un set de itemsData para poder cargarl
+  useEffect(() => {
+    if (resultId) {
+      setSearchInput('')
+      data.clearData()
+      setInput(data)
+    }
+  }, [resultId])
+
+  useEffect(() => {}, [redirect])
 
   const data = new Datos(
     idSearched.product_name,
@@ -22,22 +40,12 @@ function EditProduct () {
     idSearched.brand
   )
 
-  useEffect(() => {
-    if (query) {
-      fetchOneItem(query)
-      setInput(data.getData())
-    }
-  }, [query, idSearched])
-
-  useEffect(() => {}, [redirect])
-
   function sendData (data) {
     setRedirect(true)
     data.clearData()
-    setInput(data.getData())
   }
 
-  const { input, setInput, handleInputChange, handleSubmit } = useForm(sendData, data.getData())
+  const { input, setInput, handleInputChange, handleSubmit } = useForm(sendData, data)
 
   return (
     <div className='container text-center tw-min-w-full'>
@@ -56,14 +64,15 @@ function EditProduct () {
             firstResponse={firstResponse}
             setSearchInput={setSearchInput}
             setResult={setResult}
-            query={query}
+            resultId={resultId}
           />
           <SearchResults
             result={result}
-            setQuery={setQuery}
+            setResultId={setResultId}
+            resultId={resultId}
           />
           {
-            query && (
+            resultId && (
               <form
                 className='tw-my-10 tw-self-center tw-justify-self-center'
                 onSubmit={handleSubmit}

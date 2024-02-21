@@ -9,6 +9,7 @@ import { useState } from 'react'
 function useForm (callback, defaults) {
   const [input, setInput] = useState(defaults)
   // Función que se ejecuta cuando ocurre un cambio en el input
+
   function handleInputChange (e) {
     const { name, value } = e.target
     setInput({ ...input, [name]: value })

@@ -1,17 +1,11 @@
 import { useEffect } from 'react'
 import { Search } from 'react-bootstrap-icons'
 
-function SearchBar ({ firstResponse, searchInput, setSearchInput, setResult, query }) {
-  // Este useEffect permite que se actualice en tiempo real el query y que haga un set de itemsData para poder cargarl
+function SearchBar ({ firstResponse, searchInput, setSearchInput, setResult, resultId }) {
   useEffect(() => {
     filterProductsSearched()
   }, [searchInput])
 
-  useEffect(() => {
-    if (query) {
-      setSearchInput('')
-    }
-  }, [query])
   function filterProductsSearched () {
     setResult(firstResponse.filter(product => {
       return searchInput && product && product.product_name.toLowerCase().includes(searchInput.toLowerCase())
@@ -20,6 +14,7 @@ function SearchBar ({ firstResponse, searchInput, setSearchInput, setResult, que
 
   function handleInputChange (e) {
     setSearchInput(e.target.value)
+    console.log(e.target.value)
   }
   return (
     <div
