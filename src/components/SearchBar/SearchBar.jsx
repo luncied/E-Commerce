@@ -14,7 +14,6 @@ function SearchBar ({ firstResponse, searchInput, setSearchInput, setResult, res
 
   function handleInputChange (e) {
     setSearchInput(e.target.value)
-    console.log(e.target.value)
   }
   return (
     <div

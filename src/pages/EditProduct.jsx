@@ -11,24 +11,37 @@ function EditProduct () {
 
   const [redirect, setRedirect] = useState(false)
   const [searchInput, setSearchInput] = useState('') // Registra lo que hay en el input para buscar en la API
+  const [result, setResult] = useState([]) // Es un arreglo de nombres que machean con el searchInput y aparece en el SearchResults.jsx
   const [resultId, setResultId] = useState('') // El ID del objeto que hace match con lo buscado en searchBar
-  const [result, setResult] = useState([]) // El objeto que hace match con lo buscado en el searchBar
 
   useEffect(() => {
     if (resultId) {
       fetchOneItem(resultId)
       setInput(data)
+      setSearchInput('')
+      // console.log(idSearched)
     }
-  }, [result])
+  }, [resultId])
 
   // Este useEffect permite que se actualice en tiempo real el resultId y que haga un set de itemsData para poder cargarl
   useEffect(() => {
-    if (resultId) {
-      setSearchInput('')
+    if (!resultId) {
       data.clearData()
       setInput(data)
     }
   }, [resultId])
+
+  // // Esto deberia funcionar
+  // // Escucha cuando se establece el objeto de result y setea el input a lo escuchado
+  // useEffect(() => {
+  //   if (Object.keys(idSearched).length > 0) {
+  //     setInput({ ...input, productName: idSearched.product_name })
+  //     setInput({ ...input, description: idSearched.description })
+  //     setInput({ ...input, price: idSearched.price })
+  //     setInput({ ...input, category: idSearched.category })
+  //     setInput({ ...input, brand: idSearched.brand })
+  //   }
+  // }, [resultId])
 
   useEffect(() => {}, [redirect])
 
@@ -67,6 +80,7 @@ function EditProduct () {
             resultId={resultId}
           />
           <SearchResults
+            searchInput={searchInput}
             result={result}
             setResultId={setResultId}
             resultId={resultId}

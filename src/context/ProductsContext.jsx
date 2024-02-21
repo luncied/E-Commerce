@@ -8,7 +8,7 @@ const ProductsContext = createContext()
 function ProductsProvider ({ children }) {
   const [firstResponse, setfirstResponse] = useState(null)
   const [itemsData, setItemsData] = useState([])
-  const [idSearched, setIdSearched] = useState([])
+  const [idSearched, setIdSearched] = useState({})
   const [loading, setLoadign] = useState(true)
 
   useEffect(() => {
